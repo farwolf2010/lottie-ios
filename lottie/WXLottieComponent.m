@@ -267,7 +267,9 @@ WX_EXPORT_METHOD(@selector(setValue:))
 - (void)viewDidLoad
 {
     WXLottieView * lottieView = (WXLottieView*)self.view;
-    
+    if([_src startWith:@"file://"]){
+        _src=  [_src replace:@"file://" withString:@""];
+    }
     [lottieView setSourceName: _src];
     [lottieView setSpeed:_speed];
     [lottieView setProgress:_progress];
